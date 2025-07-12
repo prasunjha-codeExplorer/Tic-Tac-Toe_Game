@@ -29,13 +29,11 @@ let winPat = [
             let pos3 = pat[2];
             if(boxes[pos1].innerText!="" && boxes[pos2].innerText!="" && boxes[pos3].innerText!=""){
                   if(boxes[pos1].innerText === boxes[pos2].innerText && boxes[pos1].innerText === boxes[pos3].innerText){
-                        p.style.fontSize = "30px";
-                        p.style.textDecoration = "underline";
-                        p.style.color = "darkorange";
-                        p.innerText = `Player ${prevTurn}  has won the game :)`;
                         for(let box of boxes){
                               box.disabled = true;
                         }
+                        alert(`Player ${prevTurn}  has won the game :)`);
+                        alert('If you wants to play a new game reset it!');
                   }
             }
       }
