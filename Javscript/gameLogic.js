@@ -1,54 +1,70 @@
-let boxes =  document.querySelectorAll(".box");
-let rstBtn = document.querySelector("#strtAgain");
-let p = document.querySelector(".display_msg");
-let prevTurn = 'O';
-let winPat = [
-      [0,1,2],
-      [3,4,5],
-      [6,7,8],
-      [0,3,6],
-      [1,4,7],
-      [2,5,8],
-      [0,4,8],
-      [2,4,6]
-];
-let count=0;
-    boxes.forEach((box) => {
-    box.addEventListener("click" , () => {
-            if(prevTurn === 'O'){
-                box.innerText = 'X';
-                prevTurn = 'X';
-                box.disabled = true;
-            }else{
-                box.innerText = 'O';
-                prevTurn = 'O';
-                box.disabled = true;
-            }
-            count++;
-      for(let pat of winPat){
-            let pos1 = pat[0];
-            let pos2 = pat[1];
-            let pos3 = pat[2];
-            if(boxes[pos1].innerText!="" && boxes[pos2].innerText!="" && boxes[pos3].innerText!=""){
-                  if(boxes[pos1].innerText === boxes[pos2].innerText && boxes[pos1].innerText === boxes[pos3].innerText){
-                        for(let box of boxes){
-                              box.disabled = true;
-                        }
-                        alert(`Player ${prevTurn}  has won the game :)`);
-                        alert('If you wants to play a new game reset it!');
-                  }
-            }
-      }
-    });
-    if(count==10){
-      alert('Game ends with a draw!');
+body{
+    background-color: #548547;
+}
+h1{
+    font-weight: bolder;
+    color: aqua;
+    font-family: cursive;
+    text-align: center;
+}
+.container{
+    height: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.bigBox{
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vmin;
+}
+.box{
+    height: 18vmin;
+    width: 18vmin;
+    border-radius: 1rem;
+    border: none;
+    font-size: 8vmin;
+    color: blue;
+}
+.box:hover{
+    cursor:pointer;
+    background: yellow;
+}
+#strtAgain{
+    height: 10vmin;
+    width: 20vmin;
+    border-radius: 1rem;
+    border: none;
+    background-color: purple;
+    color: black;
+    margin-left: 50%;
+    font-weight: bolder;
+}
+.display_msg{
+    color: black;
+    font-size: 0px;
+    margin-left: 50%;
+    text-decoration: #548547;
+}
+#strtAgain:hover{
+    background: #080808;
+    cursor: pointer;
+    color: wheat;
+}
+
+@media only screen and (max-width: 600px){
+    h1{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
     }
-rstBtn.addEventListener("click", () => {
-         for(let box of boxes){
-            box.disabled = false;
-            box.innerText = '';
-            p.style.fontSize = "0px";
-            count=0;
-         }
-      });
-});
+    #strtAgain{
+        font-size: 10px;
+        margin-left: 30%;
+        font-weight: lighter;
+    }
+}
