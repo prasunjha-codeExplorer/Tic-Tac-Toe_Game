@@ -12,6 +12,7 @@ let winPat = [
       [0,4,8],
       [2,4,6]
 ];
+let count=0;
     boxes.forEach((box) => {
     box.addEventListener("click" , () => {
             if(prevTurn === 'O'){
@@ -23,6 +24,7 @@ let winPat = [
                 prevTurn = 'O';
                 box.disabled = true;
             }
+            count++;
       for(let pat of winPat){
             let pos1 = pat[0];
             let pos2 = pat[1];
@@ -37,16 +39,16 @@ let winPat = [
                   }
             }
       }
-});
-
+    });
+    if(count==10){
+      alert('Game ends with a draw!');
+    }
 rstBtn.addEventListener("click", () => {
          for(let box of boxes){
             box.disabled = false;
             box.innerText = '';
             p.style.fontSize = "0px";
+            count=0;
          }
-         count=0;
       });
-      });
-
-    
+});
